@@ -1,0 +1,9 @@
+.container-hero{
+    background-image: url(../../assets/Header.jpg);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 200px;
+}

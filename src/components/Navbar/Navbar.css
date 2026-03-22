@@ -1,0 +1,37 @@
+.container{
+  background-color: rgb(41, 41, 41);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  color: white;
+}
+.container-main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-main ul{
+  display: flex;
+  list-style: none;
+  gap: 10px;
+}
+
+.container-main li{
+  text-decoration: none;
+}
+.button{
+  box-sizing: border-box;
+  height: 40px;
+  padding: 0 10px;
+  background-color:rgba(255, 255, 255, 0);
+  border-radius: 10px;
+  border: 3px solid white;
+  color: white;
+}
+.button:hover{
+  background-color: rgb(179, 179, 179);
+  color: black;
+}

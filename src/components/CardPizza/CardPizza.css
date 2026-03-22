@@ -1,0 +1,19 @@
+.CardPizza{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin: 10px;
+    width: 30%;
+    max-width: 300px;
+    justify-content: center;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: rgb(221, 225, 183);
+}
+.CardPizza img{
+    border-radius:  20px 20px 0 0;
+}
+.CardPizza__Buttons{
+    display: flex;
+    justify-content: space-around;
+}
