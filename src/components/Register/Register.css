@@ -1,0 +1,13 @@
+.Container-Register{
+    display: flex;
+    flex-direction: column;
+    max-width: 900px;
+    justify-content: center;
+    margin: auto;
+    padding: 100px;
+}
+.Register-btn{
+    margin-top: 50px;
+    max-width: 300px;
+    padding: 10px;
+}

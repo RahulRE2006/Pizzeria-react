@@ -1,0 +1,13 @@
+.Form-Login{
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.Login-btn{
+    margin-top: 40px;
+    padding: 10px;
+    max-width: 400px;
+}

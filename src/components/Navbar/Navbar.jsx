@@ -1,6 +1,5 @@
 import './Navbar.css'
-
-function Navbar () {
+function Navbar ({ setVistaActual }) {
     const total = 25000;
     const token = true;
     let button1;
@@ -18,9 +17,9 @@ function Navbar () {
             <div className='container-main'>
                 <h2>Pizzeria Mamma Mia</h2>
                 <ul>
-                    <li><button className='button'>Home</button></li>
-                    <li><button className='button'>{button1}</button></li>
-                    <li><button className='button'>{button2}</button></li>
+                    <li><button className='button'   onClick={() => setVistaActual('home')}> Home</button></li>
+                    <li><button className='button'   onClick={() => setVistaActual('login')}> Login</button></li>
+                    <li><button className='button'  onClick={() => setVistaActual('register')}> Register</button></li>
                 </ul>
             </div>
             <button className='button button-total'>total : ${total.toLocaleString()}</button>

@@ -1,9 +1,10 @@
 import './Home.css'
 import CardPizza from "../CardPizza/CardPizza";
-
+import Hero from '../Hero/Hero';
 function Home (){
     return(
     <div>
+        <Hero/>
         <main className="menu">
         <CardPizza
             url={'https://www.laespanolaaceites.com/wp-content/uploads/2019/06/pizza-con-chorizo-jamon-y-queso-1080x671.jpg'}
