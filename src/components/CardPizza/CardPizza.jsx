@@ -1,14 +1,17 @@
 import './CardPizza.css'
-function CardPizza({url,nombre,ingredientes,precio}){
+function CardPizza({desc,id,img,ingredients,name,price}){
     return(
         <div className="CardPizza">
-            <img src={url} alt="" />
+            <img src={img} alt="" />
             <h4>
-                {nombre}
+                {name}
             </h4>
             <p>Ingredientes :</p>
-            <p>{ingredientes}</p>
-            <h3>Precio : ${Number(precio).toLocaleString()}</h3>
+            <p>{ingredients}</p>
+            <h3>Precio : ${Number(price).toLocaleString()}</h3>
+            <p>{desc}</p>
+            <p>id</p>
+            <p>{id}</p>
             <div className='CardPizza__Buttons'>
                 <button>
                     ver mas

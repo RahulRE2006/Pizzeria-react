@@ -22,7 +22,7 @@ function Navbar ({ setVistaActual }) {
                     <li><button className='button'  onClick={() => setVistaActual('register')}> Register</button></li>
                 </ul>
             </div>
-            <button className='button button-total'>total : ${total.toLocaleString()}</button>
+            <button className='button button-total' onClick={() => setVistaActual('cart')}>total : ${total.toLocaleString()}</button>
         </div>
     );
 }

@@ -4,7 +4,8 @@
     border: 1px solid black;
     margin: 10px;
     width: 30%;
-    max-width: 300px;
+    min-width: 300px;
+    max-width: 600px;
     justify-content: center;
     border-radius: 20px;
     padding: 10px;

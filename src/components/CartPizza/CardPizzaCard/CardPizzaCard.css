@@ -1,0 +1,36 @@
+.CardCart{
+    display: flex;
+    align-items: center;
+    margin: 30px 0;
+    border-radius: 10px;
+    background-color: rgb(166, 177, 131);
+    padding: 20px;
+    gap: 10px;
+    justify-content: space-between;
+
+}
+.CardCart img{
+    max-width: 100px;
+    border-radius: 100px;
+}
+
+.buttonCart{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.buttonCart button{
+    border: 1px solid white;
+    width: 30px;
+    height: 30px;
+}
+.countCart{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.contexCart{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
