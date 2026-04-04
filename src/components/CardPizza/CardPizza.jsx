@@ -1,5 +1,5 @@
 import './CardPizza.css'
-function CardPizza({desc,id,img,ingredients,name,price}){
+function CardPizza({desc,img,ingredients,name,price}){
     return(
         <div className="CardPizza">
             <img src={img} alt="" />
@@ -10,13 +10,11 @@ function CardPizza({desc,id,img,ingredients,name,price}){
             <p>{ingredients}</p>
             <h3>Precio : ${Number(price).toLocaleString()}</h3>
             <p>{desc}</p>
-            <p>id</p>
-            <p>{id}</p>
-            <div className='CardPizza__Buttons'>
-                <button>
+            <div className='d-flex gap-3 justify-content-between p-2'>
+                <button className='btn border-white text-white'>
                     ver mas
                 </button>
-                <button>
+                <button className='btn border-white text-white'>
                     añadir
                 </button>
             </div>

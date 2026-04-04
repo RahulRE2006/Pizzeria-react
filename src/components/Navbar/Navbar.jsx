@@ -13,16 +13,19 @@ function Navbar ({ setVistaActual }) {
         button2 = "Logout"
     }
     return(
-        <div className='container'>
-            <div className='container-main'>
+        <div className='container-fluid'>
+            <div className='d-flex gap-3 align-items-center
+             justify-content-center'>
                 <h2>Pizzeria Mamma Mia</h2>
-                <ul>
+                <ul className='list-unstyled d-flex gap-3 mb-0'>
                     <li><button className='button'   onClick={() => setVistaActual('home')}> Home</button></li>
                     <li><button className='button'   onClick={() => setVistaActual('login')}> Login</button></li>
                     <li><button className='button'  onClick={() => setVistaActual('register')}> Register</button></li>
                 </ul>
             </div>
-            <button className='button button-total' onClick={() => setVistaActual('cart')}>total : ${total.toLocaleString()}</button>
+            <div>
+                <button className='button button-total' onClick={() => setVistaActual('cart')}>total : ${total.toLocaleString()}</button>
+            </div>
         </div>
     );
 }
