@@ -1,12 +1,12 @@
 import './CardPizza.css'
-// src/components/CardPizza/CardPizza.jsx
 import { useContext } from "react";
-import { ContextCart } from "../../Context/cartContext"; // Asegura que la ruta sea correcta
+import { ContextCart } from "../../Context/cartContext"; 
+import { Link } from "react-router-dom";
 function CardPizza({ pizza }) { 
     const { addToCart } = useContext(ContextCart); // <--- Traemos la función del contexto
   const { desc, img, ingredients, name, price } = pizza;
     return(
-        <div className="CardPizza">
+        <div className="CardPizza card h-100 bg-secondary p-3 rounded">
             <img src={img} alt="" />
             <h4>
                 {name}
@@ -16,10 +16,10 @@ function CardPizza({ pizza }) {
             <h3>Precio : ${Number(price).toLocaleString()}</h3>
             <p>{desc}</p>
             <div className='d-flex gap-3 justify-content-between p-2'>
-                <button className='btn border-white text-black'>
-                    ver mas
-                </button>
-                <button onClick={() => addToCart(pizza)} className='btn border-white text-black'>
+                <Link to={`/pizza/${pizza.id}`}>
+  <button className='btn border-black text-black'>ver mas</button>
+</Link>
+                <button onClick={() => addToCart(pizza)} className='btn border-black text-black'>
                     añadir
                 </button>
             </div>

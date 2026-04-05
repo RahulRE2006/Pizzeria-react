@@ -1,25 +1,30 @@
-import { useState } from 'react';
 import './Register.css';
 import { registrarUsuario } from '../../Js/usuarios';
-
+import { useState, useContext } from 'react'; 
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../Context/UserContext';
 function Register() {
+    const { setToken } = useContext(UserContext);
+  const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+   const handleSubmit = (e) => {
+    e.preventDefault();
 
-        if (password !== confirmPassword) {
-            alert("Las contraseñas no coinciden.");
-            return;
-        }
+    if (password !== confirmPassword) {
+      alert("Las contraseñas no coinciden.");
+      return;
+    }
 
-        registrarUsuario({ email, password });
-        
-        alert("¡Cuenta creada! Ahora puedes ir al Login.");
-        setEmail(""); setPassword(""); setConfirmPassword("");
-    };
+    registrarUsuario({ email, password });
+
+    alert("¡Cuenta creada con éxito! Bienvenido.");
+    
+    setToken(true); 
+    navigate("/"); 
+  };
 
     return (
         <form className='Container-Register' onSubmit={handleSubmit}>

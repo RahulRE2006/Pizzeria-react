@@ -1,23 +1,40 @@
-import { useState } from 'react';
-import { buscarUsuario } from '../../Js/usuarios';
-import './Login.css'
+import { useState, useContext } from 'react'; // Única línea para hooks
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../Context/UserContext';
+import './Login.css';
 
 function Login() {
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("");
+  const { setToken } = useContext(UserContext); 
+  const navigate = useNavigate();
 
-    const handleLogin = (e) => {
-        e.preventDefault();
+  const handleLogin = async (e) => {
+  e.preventDefault();
+  try {
+    const response = await fetch('http://localhost:5000/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
 
-        const usuarioEncontrado = buscarUsuario(email, password);
+    const data = await response.json();
 
-        if (usuarioEncontrado) {
-            alert(`¡Bienvenido de nuevo, ${email}!`);
-        } else {
-            alert("Email o contraseña incorrectos. ¿Ya te registraste?");
-        }
-    };
-
+    if (response.ok) {
+      // Guardamos el token real que viene del backend
+      setToken(data.token); 
+      alert("¡Bienvenido de nuevo!");
+      navigate("/");
+    } else {
+      // Si el backend responde con error (ej: credenciales mal)
+      alert(data.error || "Credenciales incorrectas");
+    }
+  } catch (error) {
+    // Este es el bloque que el error de la imagen decía que faltaba
+    console.error("Error de conexión:", error);
+    alert("No se pudo conectar con el servidor. Revisa el puerto 5000.");
+  }
+};
     return (
         <div className='Container-Login'>
             <form className='Form-Login' onSubmit={handleLogin}>

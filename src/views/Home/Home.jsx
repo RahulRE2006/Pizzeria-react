@@ -23,10 +23,10 @@ const consultarPizzas = async () => {
     return(
     <div>
         <Hero/>
-        <section className='container d-flex flex-column align-items-center gap-5 mt-4'>
-            <ul className='d-flex list-unstyled gap-3 row' >
+        <section className='container mt-3'>
+            <ul className='row list-unstyled g-3 justify-content-center' >
                 {pizzas.map((pizza) => (
-  <li key={pizza.id} className="...">
+  <li key={pizza.id} className='col-12 col-md-5 col-lg-4'>
     <CardPizza 
       pizza={pizza}
     />
