@@ -8,6 +8,29 @@ function CartPizza() {
   
   const { token } = useContext(UserContext); 
 
+const handleCheckout = async () => {
+  try {
+    const response = await fetch("http://localhost:5000/api/checkouts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`, 
+      },
+      body: JSON.stringify({
+        cart: cart,
+      }),
+    });
+
+    if (response.ok) {
+      alert("¡Compra exitosa! 🍕");
+    } else {
+      alert("Hubo un error al procesar el pago.");
+    }
+  } catch (error) {
+    console.error("Error en el checkout:", error);
+    alert("No se pudo conectar con el servidor.");
+  }
+};
   return (
     <div className="container mt-5">
       <h2>Detalles del pedido:</h2>
@@ -44,11 +67,12 @@ function CartPizza() {
           <h2 className="mb-3">Total: ${totalPagar.toLocaleString()}</h2>
 
           <button 
-            className="btn btn-dark btn-lg" 
-            disabled={!token}
-          >
-            Pagar
-          </button>
+  className="btn btn-dark btn-lg" 
+  disabled={!token}
+  onClick={handleCheckout}
+>
+  Pagar
+</button>
 
           {!token && (
             <p className="text-danger mt-2 small">

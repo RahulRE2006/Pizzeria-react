@@ -1,40 +1,29 @@
-import { useState, useContext } from 'react'; // Única línea para hooks
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from '../../Context/UserContext';
+import { UserContext } from '../../Context/UserContext'; 
 import './Login.css';
 
 function Login() {
     const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const { setToken } = useContext(UserContext); 
-  const navigate = useNavigate();
+    const [password, setPassword] = useState("");
+    
+    const { login } = useContext(UserContext); 
+    const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
-  e.preventDefault();
-  try {
-    const response = await fetch('http://localhost:5000/api/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password })
-    });
+    const handleLogin = async (e) => {
+        e.preventDefault();
 
-    const data = await response.json();
+        const data = await login(email, password);
 
-    if (response.ok) {
-      // Guardamos el token real que viene del backend
-      setToken(data.token); 
-      alert("¡Bienvenido de nuevo!");
-      navigate("/");
-    } else {
-      // Si el backend responde con error (ej: credenciales mal)
-      alert(data.error || "Credenciales incorrectas");
-    }
-  } catch (error) {
-    // Este es el bloque que el error de la imagen decía que faltaba
-    console.error("Error de conexión:", error);
-    alert("No se pudo conectar con el servidor. Revisa el puerto 5000.");
-  }
-};
+        if (data.token) {
+            alert("¡Bienvenido de nuevo!");
+            navigate("/");
+        } else {
+
+            alert(data.error || "Credenciales incorrectas o error de conexión");
+        }
+    };
+
     return (
         <div className='Container-Login'>
             <form className='Form-Login' onSubmit={handleLogin}>
@@ -44,12 +33,14 @@ function Login() {
                     type="email" 
                     value={email} 
                     onChange={(e) => setEmail(e.target.value)} 
+                    required
                 />
                 <p>Contraseña</p>
                 <input 
                     type="password" 
                     value={password} 
                     onChange={(e) => setPassword(e.target.value)} 
+                    required
                 />
                 <button type='submit' className='Login-btn'>Entrar</button>
             </form>
