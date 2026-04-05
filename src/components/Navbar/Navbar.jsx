@@ -1,8 +1,10 @@
 import './Navbar.css'
 import { Link } from 'react-router-dom';
+import { useContext } from "react";
+import { ContextCart } from "../../Context/cartContext";
 
 function Navbar () {
-    const total = 25000;
+    const { totalPagar } = useContext(ContextCart);
     const token = true;
     let button1;
     let button2;
@@ -27,7 +29,7 @@ function Navbar () {
                 </ul>
             </div>
             <div>
-                <Link to='/cart' ><button className='button button-total'>total : ${total.toLocaleString()}</button></Link>
+                <Link to='/cart' ><button className='button button-total'>total: ${totalPagar.toLocaleString()}</button></Link>
             </div>
         </div>
     );

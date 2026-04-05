@@ -1,30 +1,12 @@
-import {pizzaCart as estadoInitial} from '../../Js/pizzas'
-import { useState } from 'react';
-import './CartPizza.css'
-function CartPizza(){
-  const [pizzas , setPizzas] = useState(estadoInitial)
-  function aumentar(id){
-  const nuevoCarrito = pizzas.map((pizza) => {
-    if (pizza.id === id) {
-      return { ...pizza, count: pizza.count + 1 };
-    }
-    return pizza;
-  });
-  setPizzas(nuevoCarrito);
-  }
-  function disminuir(id){
-  const nuevoCarrito = pizzas.map((pizza) => {
-    if (pizza.id === id && pizza.count >= 1) {
-      return { ...pizza, count: pizza.count - 1 };
-    }
-    return pizza;
-  });
-  setPizzas(nuevoCarrito);
-  }
-  console.log(pizzas)
-const totalPagar = pizzas.reduce((total, pizza) => total + (pizza.price * pizza.count), 0);    return(
-      <>
-      {pizzas.map(pizza =>(
+import { useContext } from "react";
+import { ContextCart } from "../../Context/cartContext";
+import './CartPizza.css';
+
+function CartPizza() {
+  const { cart, aumentar, disminuir, totalPagar , removeFromCart } = useContext(ContextCart);
+  return (
+    <>
+      {cart.map((pizza) => (
         <ul className='cardpizi' key={pizza.id}>
           <li>
             {pizza.name}
@@ -32,14 +14,20 @@ const totalPagar = pizzas.reduce((total, pizza) => total + (pizza.price * pizza.
           </li>
           <li>
             <button onClick={() => aumentar(pizza.id)}>+</button>
-              {pizza.count}
+            {pizza.count}
             <button onClick={() => disminuir(pizza.id)}>-</button>
+            <button 
+              onClick={() => removeFromCart(pizza.id)} 
+              className="btn btn-danger btn-sm ms-3"
+            >
+              Eliminar
+            </button>
           </li>
         </ul>
       ))}
-      <h2>precio total :  {totalPagar} </h2>
-      </>
-    )
+      <h2>precio total : {totalPagar}</h2>
+    </>
+  );
 }
 
-export default CartPizza
+export default CartPizza;

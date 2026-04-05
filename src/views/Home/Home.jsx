@@ -1,9 +1,7 @@
 import { useState , useEffect } from 'react';
-
 import './Home.css'
 import CardPizza from "../../components/CardPizza/CardPizza";
 import Hero from '../../components/Hero/Hero';
-import CartPizza from '../CartPizza/CartPizza';
 
 function Home (){
     const [pizzas , setPizzas] = useState([]);
@@ -11,7 +9,6 @@ function Home (){
     useEffect(() => {
         consultarPizzas();
     }, []);
-
 const consultarPizzas = async () => {
 
     try {
@@ -23,26 +20,18 @@ const consultarPizzas = async () => {
             console.error('Error al obtener las pizzas:', error);
         }
         }
-
-
-
-
     return(
     <div>
         <Hero/>
         <section className='container d-flex flex-column align-items-center gap-5 mt-4'>
             <ul className='d-flex list-unstyled gap-3 row' >
-                {pizzas.map(pizza => {
-                    return(<li className='card-body bg-secondary rounded-3 col-12 col-lg-5 col-xl-4 align-items-strech p-4    ' key={pizza.id}>
-                        <CardPizza
-                        img={pizza.img}
-                        name={pizza.name}
-                        price={pizza.price}
-                        ingredients={pizza.ingredients.join(', ')}
-                        desc={pizza.desc}
-                        />
-                    </li>)
-        })}
+                {pizzas.map((pizza) => (
+  <li key={pizza.id} className="...">
+    <CardPizza 
+      pizza={pizza}
+    />
+  </li>
+))}
             </ul>
         </section>
     </div>

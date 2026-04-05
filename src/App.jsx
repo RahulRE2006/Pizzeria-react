@@ -1,4 +1,5 @@
 import './App.css'
+import CartCompo from './Context/CartCompo';
 import Navbar from './components/Navbar/Navbar';
 import Home from './views/Home/Home';
 import Login from './views/Login/Login';
@@ -9,10 +10,12 @@ import Footer from './components/Footer/Footer';
 import{Route , Routes} from 'react-router-dom';
 import Profile from './views/Profile/Profile';
 
+
 function App() {
   return (
       <>
-      <Navbar />
+      <CartCompo>
+        <Navbar />
       <Routes>
         <Route
         path='/'
@@ -38,17 +41,10 @@ function App() {
         path='*'
         element={<NotFound/>}
         />
-      
-
-
-
-
-
-
-
       </Routes>
       
       <Footer/>
+      </CartCompo>
       </>
   );
 }
