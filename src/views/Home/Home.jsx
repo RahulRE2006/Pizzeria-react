@@ -1,9 +1,9 @@
 import { useState , useEffect } from 'react';
 
 import './Home.css'
-import CardPizza from "../CardPizza/CardPizza";
-import Hero from '../Hero/Hero';
-
+import CardPizza from "../../components/CardPizza/CardPizza";
+import Hero from '../../components/Hero/Hero';
+import CartPizza from '../CartPizza/CartPizza';
 
 function Home (){
     const [pizzas , setPizzas] = useState([]);
